@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="./moviestyle.css">
+<link rel="stylesheet" href="moviestyle.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>싱글벙글 영화관</title>
 </head>
 <body>
 <footer class="movie_footer">
@@ -20,9 +20,10 @@
 		</div>
 		<div class="footer3">
 			<p>&copy; 2026 CINEMA Corp. All Rights Reserved.(Java Full-Stack Practice Project)</p>
-			<p style="color: #775555">본 사이트는 포트폴리오용으로 제작된 가상의 영화예메사이트입니다.</p>
+			<p style="color: #775555"> ※본 사이트는 포트폴리오용으로 제작된 가상의 영화예메사이트입니다.</p>
 		</div>
 	</div>
 </footer>
+</div>
 </body>
 </html>

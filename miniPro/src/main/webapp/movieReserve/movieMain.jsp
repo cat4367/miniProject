@@ -3,12 +3,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="./moviestyle.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>싱글벙글 영화관</title>
+<link rel="stylesheet" href="moviestyle.css">
 </head>
 <body>
 	<jsp:include page="head.jsp" flush="false"/>
+	<h1>메인페이지입니다. 테스트용</h1>
+	<h1>메인페이지입니다. 테스트용</h1>
+	<h1>메인페이지입니다. 테스트용</h1>
+	<h1>메인페이지입니다. 테스트용</h1>
+	<h1>메인페이지입니다. 테스트용</h1>
+	<h1>메인페이지입니다. 테스트용</h1>
+	<h1>메인페이지입니다. 테스트용</h1>
+	<h1>메인페이지입니다. 테스트용</h1>
+	<h1>메인페이지입니다. 테스트용</h1>
+	<h1>메인페이지입니다. 테스트용</h1>
+	<h1>메인페이지입니다. 테스트용</h1>
+	<h1>메인페이지입니다. 테스트용</h1>
+	<h1>메인페이지입니다. 테스트용</h1>
+	<h1>메인페이지입니다. 테스트용</h1>
+	<h1>메인페이지입니다. 테스트용</h1>
+	<h1>메인페이지입니다. 테스트용</h1>
+	<h1>메인페이지입니다. 테스트용</h1>
 	<h1>메인페이지입니다. 테스트용</h1>
 	
 	

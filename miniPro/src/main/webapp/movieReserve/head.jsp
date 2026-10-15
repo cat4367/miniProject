@@ -3,22 +3,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="./moviestyle.css">
+<link rel="stylesheet" href="moviestyle.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>싱글벙글 영화관</title>
 </head>
-<body>
+<body class="boxend">
+<div class="outbox">
 <header>
-	<div >
-	<h1>싱글벙글 영화관1</h1>
+	<div class="titlecontainer">
+	<h1 class="movietitle">😊싱글벙글 영화관</h1>
 	</div>
-	<nav>
+	<nav class="headA">
 		<a href="movieMain.jsp">
-			<span>홈</span></a>
+			<span>홈</span></a> / 
 		<a href="movieList.jsp">
-			<span>영화목록</span></a>
+			<span>영화목록</span></a> / 
 		<a href="movieRv.jsp">
-			<span>예약하기</span></a>
+			<span>예약하기</span></a> / 
 		<a href="movieCheck.jsp">
 			<span>예약현황</span></a>		
 	</nav>
