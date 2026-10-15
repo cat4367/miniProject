@@ -1,0 +1,68 @@
+create table movies(
+	movie_id varchar(20) not null,
+	title varchar(100) not null,
+	content text,
+	rating varchar(20),
+	release_year int,
+	company varchar(100),
+	director varchar(50),
+	genre varchar(100),
+	actors varchar(200),
+	primary key (movie_id)
+);
+select * from movies;
+INSERT INTO movies (movie_id, title, content, rating, release_year, company, director, genre, actors) VALUES
+('MV201001', '인셉션', '타인의 꿈에 들어가 생각을 빼앗는 특수 임무를 수행하는 자들의 이야기.', '12세관람가', 2010, '워너브라더스', '크리스토퍼 놀란', 'SF, 액션, 스릴러', '레오나르도 디카프리오, 조셉 고든 레빗'),
+('MV201102', '언터처블: 1%의 우정', '상위 1% 백만장자와 하위 1% 무일푼 간병인의 유쾌한 인생 동행.', '15세관람가', 2011, '와일드 붕타', '올리비에 나카슈', '드라마, 코미디', '오마 시, 프랑수아 클루제'),
+('MV201203', '광해, 왕이 된 남자', '조선시대 광해군을 대체한 천민 하선이 왕의 대리를 맡으며 벌어지는 일.', '15세관람가', 2012, 'CJ 엔터테인먼트', '추창민', '드라마, 역사', '이병헌, 류승룡'),
+('MV201304', '변호인', '1980년대 초 부산을 배경으로 인권 변호사로 거듭나는 노무현의 이야기.', '15세관람가', 2013, '위더스필름', '양우석', '드라마', '송강호, 김영애, 오달수'),
+('MV201405', '인터스텔라', '희망을 찾아 우주로 향하는 인류의 웜홀 탐사 임무.', '12세관람가', 2014, '파라마운트 픽처스', '크리스토퍼 놀란', 'SF, 드라마, 모험', '매튜 맥커너히, 앤 헤서웨이'),
+('MV201506', '베테랑', '안하무인 유아독존 재벌 3세를 쫓는 베테랑 광역수사대의 활약.', '15세관람가', 2015, '외유내강', '류승완', '액션, 범죄, 코미디', '황정민, 유아인, 유해진'),
+('MV201607', '부산행', '정체불명의 바이러스가 확산된 대한민국, 열차 안에서의 생존 사투.', '15세관람가', 2016, '영화사 레드피터', '연상호', '액션, 스릴러, 공포', '공유, 정유미, 마동석'),
+('MV201708', '택시운전사', '1981년 5월, 광주의 참상을 세계로 알린 서울 택시 기사와 기자 이야기.', '15세관람가', 2017, '더램프', '장훈', '드라마, 역사', '송강호, 토마스 크레취만, 유해진'),
+('MV201809', '보헤미안 랩소디', '전설의 록 밴드 퀸과 프레디 머큐리의 화려한 음악과 삶.', '12세관람가', 2018, '이십세기 폭스', '브라이언 싱어', '전기, 드라마, 음악', '라미 말렉, 루시 보인턴'),
+('MV201910', '기생충', '전원백수 기택네 가족이 박 사장네 가면에 스며들며 벌어지는 예측불허 사건.', '15세관람가', 2019, '바른손이앤에이', '봉준호', '드라마, 스릴러, 코미디', '송강호, 선균, 조여정, 최우식');
+
+create table screen (
+	screen_id int not null,
+	screen_name varchar(50) not null,
+	seat int not null,
+	primary key (screen_id)
+);
+alter table screen modify screen_id varchar(10) not null;
+alter table screen modify seat int not null;
+INSERT INTO screen (screen_id, screen_name, seat) VALUES
+('1관','일반',60),
+('2관','IMAX',50),
+('3관','4DX',50),
+('4관','일반',70);
+
+create table schedule (
+	schedule_id int not null,
+	movie_id varchar(20) not null,
+	screen_id varchar(10) not null,
+	screen_date date not null,
+	start_time time not null,
+	price int not null,
+	primary key (schedule_id),
+	foreign key (movie_id) references movies(movie_id) ON DELETE CASCADE,
+	foreign key (screen_id) references screen(screen_id) ON DELETE CASCADE
+);
+INSERT INTO schedule (schedule_id, movie_id, screen_id, screen_date, start_time, price) VALUES
+(1, 'MV201001', '1관', '2026-06-10', '13:30:00', 14000),
+(2, 'MV201102', '2관', '2026-06-10', '16:00:00', 15000),
+(3, 'MV201203', '3관', '2026-06-11', '11:00:00', 15000),
+(4, 'MV201304', '1관', '2026-06-11', '19:20:00', 14000),
+(5, 'MV201405', '2관', '2026-06-12', '14:00:00', 18000),
+(6, 'MV201506', '4관', '2026-06-12', '21:00:00', 14000),
+(7, 'MV201607', '3관', '2026-06-13', '15:30:00', 15000),
+(8, 'MV201910', '2관', '2026-06-13', '18:40:00', 16000);
+create table reservation (
+	reservation_id int auto_increment,
+	schedule_id int not null,
+	user_id varchar(50) not null,
+	seat_num varchar(20) not null,
+	reservation_time timestamp default current_timestamp,
+	primary key (reservation_id),
+	foreign key (schedule_id) references schedule(schedule_id) on delete cascade
+);
