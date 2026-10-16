@@ -1,7 +1,7 @@
 @charset "UTF-8";
 .listbox{
 	margin: 40px auto; /* auto를 넣으면 화면 중앙에 정렬됩니다 */
-    max-width: 1000px; /* 3개(300px * 3 = 900px)와 간격(24px * 2 = 48px)을 고려한 최적의 크기 */
+    max-width: 1100px; /* 3개(300px * 3 = 900px)와 간격(24px * 2 = 48px)을 고려한 최적의 크기 */
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     padding: 20px;
@@ -22,26 +22,51 @@
 	overflow: hidden;            
 	border: 1px solid rgba(255, 255, 255, 0.15); 
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
-	cursor: pointer;
-	padding: 5px;
+	cursor: default;
+	padding: 15px;
+	gap: 15px;                   /* 포스터 영역과 정보 영역 사이 간격 */
+	align-items: center;
 }
 .movie_card:hover {
 	transform: translateY(-6px) scale(1.02); /* 살짝 커지며 떠오르는 효과 */
 	box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
 }
+.img_area {
+	display: flex;
+	flex-direction: column;      
+	align-items: center;         
+	flex-shrink: 0;              
+}
+
 .movie_card img {
-	width: 130px;                /* 포스터 가로 고정 */
-	height: 180px;               /* 포스터 세로 고정 (약 1.2배 커진 비율) */
+	width: 156px;                /* 포스터 가로 고정 */
+	height: 216px;               /* 포스터 세로 고정 (약 1.2배 커진 비율) */
 	object-fit: cover;           /* 찌그러짐 방지 */
-	flex-shrink: 0;          	 /* 이미지가 찌그러지지 않고 꽉 차게 */
 	border-radius: 10px;
+	margin-bottom: 10px;
 }
 .movie_info {
-	padding: 18px;               /* 안쪽 여백 */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;     /* 내용 수직 가운데 정렬 */
 	flex-grow: 1;                /* 남은 공간 채우기 */
+}
+.movie_info >*{
+	margin: 1px 0;
+}
+.btn-booking {
+	display: inline-block;
+	padding: 8px 16px;
+	background-color: #e50914;
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+	border-radius: 4px;
+	transition: background-color 0.2s ease;
+}
+.btn-booking:hover {
+	background-color: #b20710;
 }
 .headA{
 	font-size: 30px;

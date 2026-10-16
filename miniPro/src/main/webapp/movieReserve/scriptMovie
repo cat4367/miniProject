@@ -23,7 +23,17 @@ INSERT INTO movies (movie_id, title, content, rating, release_year, company, dir
 ('MV201809', '보헤미안 랩소디', '전설의 록 밴드 퀸과 프레디 머큐리의 화려한 음악과 삶.', '12세관람가', 2018, '이십세기 폭스', '브라이언 싱어', '전기, 드라마, 음악', '라미 말렉, 루시 보인턴'),
 ('MV201910', '기생충', '전원백수 기택네 가족이 박 사장네 가면에 스며들며 벌어지는 예측불허 사건.', '15세관람가', 2019, '바른손이앤에이', '봉준호', '드라마, 스릴러, 코미디', '송강호, 선균, 조여정, 최우식');
 alter table movies add img_src varchar(50);
-insert into movies (img_src) values	()
+insert into movies (img_src) values	('a01'),('a02'),('a03'),('a04'),('a05'),('a06'),('a07'),('a08'),('a09'),('a10');
+update movies set img_src = 'img/a01.webp' where title = '인셉션';
+update movies set img_src = 'img/a02.webp' where title = '언터처블: 1%의 우정';
+update movies set img_src = 'img/a03.webp' where title = '광해, 왕이 된 남자';
+update movies set img_src = 'img/a04.webp' where title = '변호인';
+update movies set img_src = 'img/a05.webp' where title = '인터스텔라';
+update movies set img_src = 'img/a06.webp' where title = '베테랑';
+update movies set img_src = 'img/a07.webp' where title = '부산행';
+update movies set img_src = 'img/a08.webp' where title = '택시운전사';
+update movies set img_src = 'img/a09.webp' where title = '보헤미안 랩소디';
+update movies set img_src = 'img/a10.webp' where title = '기생충';
 
 create table screen (
 	screen_id int not null,
