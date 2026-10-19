@@ -18,6 +18,7 @@
 	%>
 	
 	<div class=listbox>
+		<h2 style="font-size: 2.0em; font-weight: bold; text-align: center;">현재 상영중인 영화</h2>
 		<div class="movie_list">
 		<%
 			for(int i = 0; i < movieList.size(); i++){

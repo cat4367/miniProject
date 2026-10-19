@@ -20,7 +20,6 @@ public class Movie implements Serializable {
 	private int seat;				//상영관 좌석
 	
 	private int scheduleId;			//영화상영 고유번호
-	private String screenDate;		//영화상영일 
 	private String startTime;		//영화상영 시작시간
 	private int price;				//영화 가격
 	
@@ -116,12 +115,6 @@ public class Movie implements Serializable {
 	}
 	public void setScheduleId(int scheduleId) {
 		this.scheduleId = scheduleId;
-	}
-	public String getScreenDate() {
-		return screenDate;
-	}
-	public void setScreenDate(String screenDate) {
-		this.screenDate = screenDate;
 	}
 	public String getStartTime() {
 		return startTime;
