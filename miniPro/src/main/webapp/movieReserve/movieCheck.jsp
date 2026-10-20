@@ -8,7 +8,9 @@
 </head>
 <body>
 	<jsp:include page="head.jsp" flush="false"/>
+	
 	<h1>예약확인 테스트용</h1>
+	
 	<jsp:include page="foot.jsp" flush="false"/>
 </body>
 </html>

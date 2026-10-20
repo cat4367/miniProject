@@ -27,6 +27,9 @@
 				for(int j = 0; j < movieList.size(); j++){
 					Movie movie = movieList.get(j);
 					if (screenNum[i].equals(movie.getScreenId())){
+						
+						int reservedCount = movieDao.reservedSeat(movie.getScheduleId()).size();
+						int remainSeat = movie.getSeat()-reservedCount;
 			%>
 				<a href="seatSelect.jsp?m.movie_id=<%= movie.getMovieId() %>" class="movie_card2">
 					
@@ -38,7 +41,7 @@
 					<div class="movie_title2"><%= movie.getTitle() %></div>
 					
 					<div class="movie_info2">
-						잔여 좌석: <%= movie.getSeat() %>석/<%= movie.getSeat() %>석<br>
+						잔여 좌석: <%= remainSeat %>석/<%= movie.getSeat() %>석<br>
 						시작 시간: <%= movie.getStartTime() %>	
 					</div>
 				</a>

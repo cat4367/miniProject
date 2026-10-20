@@ -15,6 +15,8 @@
 
 	MovieRepository dao = new MovieRepository();
 	Movie movie = dao.getMovieInfo(movieId);
+	
+	ArrayList<String> reservedSeats = dao.reservedSeat(movie.getScheduleId());
 %>
 	<jsp:include page="head.jsp" flush="false"/>
 	
@@ -51,13 +53,19 @@
 		    			
 		    			String aisleStyle = "";
 		    			if(j == 4 || j == 8) {
-		    			    aisleStyle = "margin-left: 30px;"; // 통로 넓이 조절 (원하는 px로 수정 가능)
+		    			    aisleStyle = "margin-left: 30px;"; 
 		    			}
+		    			Boolean isReserved = reservedSeats.contains(seatName);		//이미 예약된 좌석 확인
+		    			if(isReserved){
 		    	%>
-		    	
+		    		<div class="seat_item reserved" style="<%= aisleStyle %>">					
+		    			<%=seatName %>
+		    		</div>
+		    	<%} else { %>
 		    		<div class="seat_item" style="<%= aisleStyle %>" onclick="toggleSeat(this, '<%= seatName %>')">
 		    			<%=seatName %>
 		    		</div>
+		    		<% } %>
 		    	<% } %>
 		    	</div>
 			<% } %>
@@ -67,6 +75,10 @@
            	</div>
 		</div>
 	</form>
+	
+	
+	<jsp:include page="foot.jsp" flush="false"/>
+</body>
 <script>
 let selectedSeats = [];
 
@@ -97,8 +109,4 @@ function submit_check() {
     return true;
 }
 </script>
-	
-	
-	<jsp:include page="foot.jsp" flush="false"/>
-</body>
 </html>

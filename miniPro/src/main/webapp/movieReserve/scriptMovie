@@ -82,3 +82,5 @@ create table reservation (
 	primary key (reservation_id),
 	foreign key (schedule_id) references schedule(schedule_id) on delete cascade
 );
+select * from reservation;
+TRUNCATE TABLE reservation;

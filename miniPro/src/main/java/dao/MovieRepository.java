@@ -7,6 +7,7 @@ import dto.Movie;
 
 public class MovieRepository {
 	
+	private static final String ResultSet = null;
 	private ArrayList<Movie> movieList = new ArrayList<>();
 	
 	
@@ -59,6 +60,8 @@ public class MovieRepository {
 		return movieList;
 
 	}
+	
+	
 	public Movie getMovieInfo(String movieId) {
 		Movie movie = new Movie();
 		
@@ -92,10 +95,99 @@ public class MovieRepository {
 				movie.setSeat(rs.getInt("seat"));
 			}
 			
+			stmt.close();
+			conn.close();
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return movie;
 	}
+	
+	public void addCustomer(Movie movie) {
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mini_project","mini","mini123");
+			Statement stmt = conn.createStatement();
+			
+			String sql = "INSERT INTO reservation(schedule_id, user_id, seat_num) VALUES('"+ movie.getScheduleId() +"','" + movie.getUserId() + "','" + movie.getSeatNum() + "')";
+			stmt.executeUpdate(sql);
+			
+			
+			stmt.close();
+			conn.close();
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
+	public ArrayList<String> reservedSeat(int scheduleId){
+		ArrayList<String> reservedSeat = new ArrayList<>();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mini_project","mini","mini123");
+			Statement stmt = conn.createStatement();
+			
+			String sql = ("SELECT seat_num FROM reservation WHERE schedule_id = " + scheduleId);
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				String seatNumStr = rs.getString("seat_num");
+				if(seatNumStr != null && !seatNumStr.isEmpty()) {
+					String[] seats = seatNumStr.split(",");
+					for(String seat : seats) {
+						reservedSeat.add(seat);
+					}
+				}
+			}
+			
+			stmt.close();
+			conn.close();
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		
+		
+		return reservedSeat;
+	}
+	
+	public ArrayList<Movie> customerList(){
+		ArrayList<Movie> customerList = new ArrayList<>();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mini_project","mini","mini123");
+			Statement stmt = conn.createStatement();
+			
+			String sql = "SELECT r.reservation_id, r.user_id, r.seat_num, r.reservation_time, m.title, s.start_time, sc.screen_name\r\n"
+					+ "FROM reservation r JOIN schedule s ON r.schedule_id = s.schedule_id JOIN movies m ON s.movie_id = m.movie_id LEFT JOIN screen sc ON s.screen_id = sc.screen_id\r\n"
+					+ "ORDER BY r.reservation_id DESC";
+			
+			ResultSet rs = stmt.executeQuery(sql);	
+			
+			while(rs.next()) {
+				Movie customer = new Movie();
+				customer.setReservationId(Integer.parseInt(rs.getString("r.reservation_id")));
+				customer.setTitle(rs.getString("m.title"));
+				customer.setStartTime(rs.getString("s.start_time"));
+				customer.setUserId(rs.getString("r.user_id"));
+				customer.setSeatNum(rs.getString("r.seat_num"));
+				customer.setScreenName(rs.getString("sc.screen_name"));
+				customer.setReservationTime(rs.getString("r.reservation_time"));
+				
+				customerList.add(customer);
+				
+			}
+			
+			stmt.close();
+			conn.close();
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		
+		return customerList;
+	}
+	
 
 }
