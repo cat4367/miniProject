@@ -160,7 +160,7 @@ public class MovieRepository {
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mini_project","mini","mini123");
 			Statement stmt = conn.createStatement();
 			
-			String sql = "SELECT r.reservation_id, r.user_id, r.seat_num, r.reservation_time, m.title, s.start_time, sc.screen_name\r\n"
+			String sql = "SELECT r.reservation_id, r.user_id, r.seat_num, r.reservation_time, m.title, s.start_time, m.movie_id, sc.screen_name\r\n"
 					+ "FROM reservation r JOIN schedule s ON r.schedule_id = s.schedule_id JOIN movies m ON s.movie_id = m.movie_id LEFT JOIN screen sc ON s.screen_id = sc.screen_id\r\n"
 					+ "ORDER BY r.reservation_id DESC";
 			
@@ -168,13 +168,14 @@ public class MovieRepository {
 			
 			while(rs.next()) {
 				Movie customer = new Movie();
-				customer.setReservationId(Integer.parseInt(rs.getString("r.reservation_id")));
-				customer.setTitle(rs.getString("m.title"));
-				customer.setStartTime(rs.getString("s.start_time"));
-				customer.setUserId(rs.getString("r.user_id"));
-				customer.setSeatNum(rs.getString("r.seat_num"));
-				customer.setScreenName(rs.getString("sc.screen_name"));
-				customer.setReservationTime(rs.getString("r.reservation_time"));
+				customer.setReservationId(Integer.parseInt(rs.getString("reservation_id")));
+				customer.setTitle(rs.getString("title"));
+				customer.setStartTime(rs.getString("start_time"));
+				customer.setUserId(rs.getString("user_id"));
+				customer.setSeatNum(rs.getString("seat_num"));
+				customer.setScreenName(rs.getString("screen_name"));
+				customer.setReservationTime(rs.getString("reservation_time"));
+				customer.setMovieId(rs.getString("movie_id"));
 				
 				customerList.add(customer);
 				

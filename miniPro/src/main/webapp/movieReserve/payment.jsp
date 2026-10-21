@@ -20,6 +20,7 @@
 	int seatCount = selectedSeats.split(",").length;	//String 나눠서 인덱스화
 	int totalPrice = (seatCount*movie.getPrice());
 %>
+<div class="page">
 	<div class="payment_container">
         <h2 class="movie_payment">영화 예매 결제</h2>
         
@@ -74,6 +75,21 @@
             <button type="submit" class="pay_btn">결제 및 예매 완료</button>
         </form>
     </div>
+    
+    <div class="ad_container">
+        <div class="ad_content">
+            <h3>📢 공지사항 및 이벤트</h3>
+            <div class="ad_banner">
+                <p><strong>[할인 이벤트]</strong></p>
+                <p>제휴 카드로 결제 시 최대 20% 즉시 할인!</p>
+            </div>
+            <div class="ad_banner" style="margin-top: 20px;">
+                <p>🍿 <strong>매점 할인권 증정</strong></p>
+                <p>온라인 예매 고객 대상 팝콘 콤보 2,000원 할인 쿠폰 제공</p>
+            </div>
+        </div>
+    </div>
+</div>
 <%
 	String userId = request.getParameter("user_id");
 	if(userId != null && !userId.trim().isEmpty()){

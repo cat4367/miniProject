@@ -27,7 +27,7 @@
 			<div class="movie_card">
 				<div class="img_area">
 					<img alt="포스터" src="<%=movie.getImg_src()%>">
-					<a href="movieRv.jsp?" class="btn-booking">예매하기</a>
+					<a href="movieDetail.jsp?movie_id=<%= movie.getMovieId() %>" class="btn_detail">상세보기</a>
 				</div>
 				<div class="movie_info">
 					<h3><%=movie.getTitle() %></h3>

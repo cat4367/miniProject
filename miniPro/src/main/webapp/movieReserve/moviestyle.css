@@ -54,7 +54,7 @@
 .movie_info >*{
 	margin: 1px 0;
 }
-.btn-booking {
+.btn_detail {
 	display: inline-block;
 	padding: 8px 16px;
 	background-color: #e50914;
@@ -65,14 +65,8 @@
 	border-radius: 4px;
 	transition: background-color 0.2s ease;
 }
-.btn-booking:hover {
+.btn_detail:hover {
 	background-color: #b20710;
-}
-.headA{
-	font-size: 30px;
-}
-h1{
-	color: red;
 }
 
 /* 영화 예약리스트 스타일*/
@@ -211,14 +205,22 @@ h1{
 
 /*결제창 스타일*/
 
+.page {
+	display: flex;
+    justify-content: center; /* 전체 요소를 화면 정중앙에 배치 */
+    align-items: flex-start;
+    gap: 20px; /* 결제창과 광고창 사이 간격 */
+    margin: 50px auto;
+    width: fit-content;
+}
 /* 전체를 감싸는 중앙 정렬 박스 */
 .payment_container {
 	width: 500px;
-	margin: 50px auto;
-	background: #ffffff;
-	padding: 30px;
-	border-radius: 10px;
-	box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-sizing: border-box;
 }
 .movie_payment {
 	text-align: center;
@@ -226,7 +228,7 @@ h1{
 	color: #333;
 }
 /* 왼쪽 항목 / 오른쪽 값 배치를 위한 테이블 스타일 */
-.payment-table {
+.payment_table {
 	width: 100%;
 	border-collapse: collapse;
 	margin-bottom: 25px;
@@ -280,6 +282,37 @@ h1{
 	background-color: #e03131;
 }
 
+.ad_container {
+    width: 300px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+.ad_container h3 {
+    font-size: 18px;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #f1f3f5;
+    padding-bottom: 10px;
+}
+
+.ad_banner {
+    background-color: #f8f9fa;
+    border: 1px dashed #ced4da;
+    border-radius: 6px;
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
+
 
 
 
@@ -321,26 +354,244 @@ header{
     flex-direction: column;
     gap: 10px;
 }
-
-.movietitle{
-
-	font-size: 4rem;                 /* 타이틀 크기 (필요에 따라 조절) */
-	font-weight: 900;                /* 아주 두껍게 (볼드체) */             /* 멋스럽게 살짝 기울이기 */
-	color: #111111;                  /* 깊이감 있는 세련된 검은색 */
-  
-
-	text-shadow: 
-	2px 2px 0px rgba(255, 255, 255, 0.4),  /* 밝은 하이라이트 */
-	0px 5px 15px rgba(0, 0, 0, 0.3);       /* 부드러운 그림자 */
-  
-
-	letter-spacing: 2px;
-	transition: transform 0.3s ease, text-shadow 0.3s ease;
-	cursor: default;
+.header_container {
+    text-align: center;
+    padding: 35px 20px;
+    background: #ffffff;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
+
+.titlecontainer {
+    margin-bottom: 25px;
+}
+
+.movietitle {
+    font-size: 4rem;                 
+    font-weight: 900;                             
+    color: #111111;                  
+    text-shadow: 
+        2px 2px 0px rgba(255, 255, 255, 0.4),  
+        0px 5px 15px rgba(0, 0, 0, 0.3);       
+    letter-spacing: 2px;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+    cursor: default;
+    display: inline-block;
+    margin: 0;
+}
+
 .movietitle:hover {
-  transform: scale(1.02) skewX(-5deg); /* 기울임 변형을 더 역동적으로 */
-  text-shadow: 
-    3px 3px 0px rgba(255, 255, 255, 0.6),
-    0px 8px 25px rgba(0, 0, 0, 0.4);
+    transform: scale(1.02) skewX(-5deg); 
+    text-shadow: 
+        3px 3px 0px rgba(255, 255, 255, 0.6),
+        0px 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* 영화관 메뉴바(Nav) 스타일 */
+.headA {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px; /* 메뉴 간격 */
+    font-size: 24px; /* 기존 30px은 너무 커서 16~18px 대가 적당합니다 */
+}
+
+/* 개별 메뉴 버튼 스타일 */
+.headA .nav_item {
+    position: relative;
+    text-decoration: none;
+    color: #E6DC70FF;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 30px;
+    transition: all 0.25s ease;
+}
+
+.headA .nav_item:hover {
+    color: #ff4d4d;
+    background-color: #fff1f1;
+    transform: translateY(-3px);
+}
+
+/* 현재 선택된 페이지 강조용 클래스(.active 필요시 추가해서 사용 가능) */
+.headA .nav_item.active {
+    color: #ffffff;
+    background-color: #ff4d4d;
+}
+
+
+/*예약자 현황 스타일시트*/
+
+.search_wrap {
+	margin-bottom: 10px;
+	text-align: right;
+}
+    
+.search_wrap input {
+	padding: 6px 10px;
+	width: 200px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 14px;
+}
+
+    /* 영화 제목 링크 스타일 */
+.movie_link {
+	color: #007bff;
+	text-decoration: none;
+	font-weight: 500;
+}
+.movie_link:hover {
+	text-decoration: underline;
+	color: #0056b3;
+}
+.tb {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	border: 1px solid #e0e0e0;
+	border-radius: 10px;
+	overflow: hidden; 
+	background-color: #ffffff;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+    /* 헤더 스타일 */
+.tb thead tr {
+	background-color: #f8f9fa;
+	color: #333333;
+	font-weight: 600;
+}
+
+    /* 셀 공통 스타일 (가운데 정렬 + 좌우 패딩 5px 이상 확보) */
+.tb th, .tb td {
+	padding: 12px 10px; 
+	text-align: center;  
+	font-size: 14px;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+    /* 헤더 하단 경계선 강조 */
+.tb th {
+	border-bottom: 2px solid #e0e0e0;
+}
+
+    /* 마지막 행의 경계선 제거 */
+.tb tbody tr:last-child td {
+	border-bottom: none;
+}
+
+    /* 마우스 오버 시 행 강조 효과 */
+.tb tbody tr:hover {
+	background-color: #f9fbfd;
+	transition: background-color 0.2s ease;
+}
+
+
+/*상세정보 페이지 스타일시트*/
+.detail_container {
+	width: 800px;
+	margin: 0 auto;
+	background: #ffffff;
+	padding: 40px;
+	border-radius: 12px;
+	box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+	display: flex;
+	gap: 35px;
+}
+
+    /* 왼쪽 포스터 이미지 구역 */
+.poster_box {
+	width: 280px;
+	flex-shrink: 0;
+}
+
+.poster_box img {
+	width: 100%;
+	height: 400px;
+	object-fit: cover;
+	border-radius: 8px;
+	border: 1px solid #eee;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+    /* 오른쪽 정보 구역 */
+.info_box {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.movie_title {
+	font-size: 26px;
+	font-weight: bold;
+	color: #333;
+	margin-top: 0;
+	margin-bottom: 15px;
+	border-bottom: 2px solid #f1f3f5;
+	padding-bottom: 12px;
+}
+
+    /* 메타 정보 리스트 */
+.meta_list {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 20px 0;
+}
+
+.meta_list li {
+	font-size: 14px;
+	color: #555;
+	margin-bottom: 8px;
+	display: flex;
+}
+
+.meta_list li span.label {
+	width: 90px;
+	font-weight: 600;
+	color: #333;
+}
+
+    /* 줄거리 내용 구역 */
+.content_box {
+	background-color: #fdfdfd;
+	border: 1px solid #eee;
+	border-radius: 6px;
+	padding: 15px;
+	font-size: 14px;
+	color: #444;
+	line-height: 1.6;
+	flex-grow: 1;
+    max-height: 150px;
+	overflow-y: auto;
+}
+
+.content_box h4 {
+        margin: 0 0 8px 0;
+        font-size: 14px;
+        color: #333;
+}
+
+    /* 뒤로가기 버튼 */
+.btn_wrap {
+        text-align: center;
+        margin-top: 30px;
+}
+
+.back_btn {
+        display: inline-block;
+        padding: 10px 25px;
+        background-color: #495057;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        transition: background-color 0.2s;
+        margin-bottom: 20px;
+}
+
+.back_btn:hover {
+        background-color: #343a40;
 }

@@ -84,3 +84,8 @@ create table reservation (
 );
 select * from reservation;
 TRUNCATE TABLE reservation;
+alter table reservation modify seat_num varchar(200) not null;
+
+SELECT r.reservation_id, r.user_id, r.seat_num, r.reservation_time, m.title, s.start_time, sc.screen_name
+					FROM reservation r JOIN schedule s ON r.schedule_id = s.schedule_id JOIN movies m ON s.movie_id = m.movie_id LEFT JOIN screen sc ON s.screen_id = sc.screen_id
+					ORDER BY r.reservation_id DESC
