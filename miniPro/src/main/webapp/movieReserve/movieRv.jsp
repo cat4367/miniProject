@@ -50,8 +50,6 @@
 		</div>
 	<% }; %>
 	</div>
-	
-	
 	<jsp:include page="foot.jsp" flush="false"/>
 </body>
 </html>

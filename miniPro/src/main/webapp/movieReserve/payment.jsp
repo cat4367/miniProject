@@ -23,7 +23,6 @@
 <div class="page">
 	<div class="payment_container">
         <h2 class="movie_payment">영화 예매 결제</h2>
-        
         <!-- 정보를 서버로 전송하기 위한 form 태그 -->
         <form action="payment.jsp" method="post">
             <!-- 숨겨서 함께 넘겨줄 데이터들 -->

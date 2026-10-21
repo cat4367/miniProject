@@ -17,12 +17,10 @@
 		ArrayList<Movie> movieList = movieDao.getMovieList();
 	%>
 	<main class="main_container">
-        
         <!-- 현재 상영 중인 영화 롤링 섹션 -->
         <section class="now_playing_section">
             <h3 class="section_title">🔥 현재 상영 중인 영화</h3>
             
-            <!-- 슬라이드를 감싸는 부모 박스 (overflow: hidden 역할) -->
             <div class="movie_slider_wrap">
                 <div class="movie_card_container">
                     
@@ -55,9 +53,9 @@
             </div>
         </section>
     </main>
-
 	<jsp:include page="foot.jsp" flush="false"/>
 </body>
+
 <style>
 .main_container {
     max-width: 1000px;

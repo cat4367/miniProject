@@ -26,13 +26,9 @@
     </div>
     
     <form action="payment.jsp" method="post" onsubmit="return submit_check()">
-        <!-- 넘어온 movie_id를 숨겨서 함께 전달 -->
+		<!-- 데이터를 넘기기위해 히든처리해놓음 -->
         <input type="hidden" name="movie_id" value="<%= movieId %>">
-        
-        <!-- 만약 schedule 정보도 함께 담겨있다면 schedule_id도 숨겨서 같이 넘겨주면 좋습니다 -->
         <input type="hidden" name="schedule_id" value="<%= movie.getScheduleId() %>">
-        
-        <!-- 선택된 좌석 번호들이 담길 숨겨진 입력창 -->
         <input type="hidden" id="selectedSeatsInput" name="selectedSeats" value="">
         
 		<div class="booking">
@@ -103,8 +99,7 @@ function submit_check() {
         alert("좌석을 1개 이상 선택해주세요!");
         return false;
     }
-
-    // 선택된 좌석들을 콤마로 묶어서 전달
+    
     document.getElementById("selectedSeatsInput").value = selectedSeats.join(",");
     return true;
 }
