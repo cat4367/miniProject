@@ -386,6 +386,7 @@ header{
     text-shadow: 
         3px 3px 0px rgba(255, 255, 255, 0.6),
         0px 8px 25px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
 }
 
 /* 영화관 메뉴바(Nav) 스타일 */

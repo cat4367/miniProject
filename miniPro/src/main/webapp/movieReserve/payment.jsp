@@ -1,3 +1,6 @@
+<%@page import="java.util.stream.Collectors"%>
+<%@page import="java.util.stream.Collector"%>
+<%@page import="java.util.Arrays"%>
 <%@page import="dto.Movie"%>
 <%@page import="dao.MovieRepository"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -17,6 +20,7 @@
 	MovieRepository dao = new MovieRepository();
 	Movie movie = dao.getMovieInfo(request.getParameter("movie_id"));
 	
+	String reselectedSeats = Arrays.stream(selectedSeats.split(",")).sorted().collect(Collectors.joining(","));
 	int seatCount = selectedSeats.split(",").length;	//String 나눠서 인덱스화
 	int totalPrice = (seatCount*movie.getPrice());
 %>
@@ -45,7 +49,7 @@
                 </tr>
                 <tr>
                     <th>선택 좌석</th>
-                    <td><strong><%= selectedSeats %></strong> (<%= seatCount %>석)</td>
+                    <td><strong><%= reselectedSeats %></strong> (<%= seatCount %>석)</td>
                 </tr>
                 <tr>
                     <th>결제 금액</th>
@@ -93,11 +97,11 @@
 	String userId = request.getParameter("user_id");
 	if(userId != null && !userId.trim().isEmpty()){
 		
-		String selectedSeat = request.getParameter("selectedSeats");
+		//String selectedSeat = request.getParameter("selectedSeats");
 		String scheduleId = request.getParameter("schedule_id");
 		
 		movie.setUserId(userId);
-		movie.setSeatNum(selectedSeat);
+		movie.setSeatNum(reselectedSeats);
 		movie.setScheduleId(Integer.parseInt(scheduleId));
 		
 		

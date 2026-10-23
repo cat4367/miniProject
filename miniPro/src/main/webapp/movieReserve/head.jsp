@@ -11,7 +11,7 @@
 <div class="outbox">
 <header>
 	<div class="titlecontainer">
-	<h1 class="movietitle">😊싱글벙글 영화관</h1>
+	<a href="movieMain.jsp"><h1 class="movietitle">😊싱글벙글 영화관</h1></a>
 	</div>
 	<nav class="headA">
 		<a href="movieMain.jsp" class="nav_item">홈</a>
